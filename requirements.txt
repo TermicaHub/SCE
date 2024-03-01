@@ -1,0 +1,11 @@
+holidays==0.36
+holidays_es==2.0.0
+matplotlib==3.7.0
+matplotlib==3.8.0
+numpy==1.23.5
+numpy==1.25.2
+numpy_financial==1.0.0
+pandas==1.5.3
+pytz==2022.7
+pytz==2023.3.post1
+pytz==2024.1
