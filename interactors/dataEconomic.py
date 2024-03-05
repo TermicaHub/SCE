@@ -38,6 +38,16 @@ class somCInputs(insertionMethod):
         data_params = get_data.start()
         return data_params
 
+class somCInputsAdv(insertionMethod): 
+    def __init__(self):
+        pass
+    def getInputs(self):
+        TypeFile_Econ = dataEcon_repository.ciclicaAdv()
+        get_data = dataEcon_repository.dataEcon(TypeFile_Econ)
+        data_params = get_data.start()
+        return data_params
+
+
 class PVPCData(insertionMethod):
     def __init__(self):
         pass

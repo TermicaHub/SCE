@@ -35,6 +35,16 @@ class ciclicaSimple(currencyType): # Read .json from Ciclica without transformat
         read = reader.reader(filePath,typeFile)
         get_data = read.start()
         return get_data
+    
+class ciclicaAdv(currencyType): # Read .json from Ciclica without transformation
+    def dataSource(self):
+        import sys
+        direct = sys.path[0]
+        filePath = direct + '\\resources\data\dataeconomic2.json'
+        typeFile = reader.readJSON()
+        read = reader.reader(filePath,typeFile)
+        get_data = read.start()
+        return get_data
 
 class PVPCActive(currencyType): # Read .csv with PVPC active hourly prices from 2022
     def dataSource(self):

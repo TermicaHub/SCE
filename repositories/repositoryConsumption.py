@@ -19,15 +19,28 @@ from resources import reader
 
 class currencyType(ABC):
     @abstractmethod
-    def __init__(self,oc_viv):
-        #numero de ocupantes de la vivienda
-        self.n_occ=oc_viv
+    # def __init__(self,oc_viv):
+    #     #numero de ocupantes de la vivienda
+    #     self.n_occ=oc_viv
     def dataSource(self):
         pass
 
+class SomProfilesSimple(currencyType):
+    def dataSource(self):
+        import sys
+        import pandas as pd
+        direct = sys.path[0]
+        filePath = direct + '\\resources\\data\\ConsProfiles_OCC2.57.csv'
+        typeFile = reader.readCSVdf()
+        read = reader.reader(filePath,typeFile)
+        data_out = read.start()
+        data_out.index= [pd.Timestamp('2021-01-01 00:00') + pd.Timedelta(hours=i) for i in data_out.index]
+        return data_out
+    
 class SomProfiles(currencyType):
     def __init__(self,oc_viv):
-        currencyType.__init__(self,oc_viv)
+        #currencyType.__init__(self,oc_viv)
+        self.n_occ=oc_viv
     def dataSource(self):
         import sys
         import pandas as pd
