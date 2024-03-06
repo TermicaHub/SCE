@@ -43,6 +43,7 @@ class ConsSimple:
         dataSom = cons.start()
                 
         return dataSom
+    
     def cons_total(self):
 
        
@@ -58,7 +59,7 @@ class ConsSimple:
             profile_base=self.num_v*profile_base/cons_y*2280
             
         profile_total=pd.DataFrame()
-        profile_total['Total']=profile_base
+        profile_total['Cons_total']=profile_base
         
         return profile_total
         
