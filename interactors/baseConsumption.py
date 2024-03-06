@@ -56,7 +56,7 @@ class ConsSimple:
         
         elif self.num_v>1:
             cons_y=profile_base.sum()
-            profile_base=self.num_v*profile_base/cons_y*2280
+            profile_base=self.num_v*profile_base/cons_y*2200
             
         profile_total=pd.DataFrame()
         profile_total['Cons_total']=profile_base
