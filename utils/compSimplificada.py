@@ -313,14 +313,13 @@ class balEcoYear:
         return NPV,payback_c
 
 
-    def calcNPVBS(self,total_cost,tariff):
+    def calcNPVBS(self,total_cost,tariff,cost_mant):
         annual_savings_life=self.savingsLifeBS(tariff)
         NPV=[]
         cash_flow_ac=[]
         NPV.append((-1)*total_cost)
         cash_flow_ac.append((-1)*total_cost)
-        #aquí se añade el coste de mantenimiento anual
-        cost_mant=self.params["cost_mant_y"]*self.area
+       
                 
         #el descuento del IBI entra como un componente más de los ahorros
         #determina si hay o no descuento del IBI, podría ser también que si no hay el valor sea 0 y lo chequea antes 
@@ -374,11 +373,10 @@ class balEcoYear:
         plt.savefig("sample_plot.png", dpi=300, bbox_inches='tight')
         
     
-    def calcLCOE(self,total_cost):
+    def calcLCOE(self,total_cost,cost_mant):
         #here we are considering the same yearly generation throughout the lifetime
-        #the only cost considered is the initial investment, here we could add operation and maintainance costs as well 
-        #we are not taking into account replacement of inverters during the life span
-        LCOE=total_cost/(self.params['pv_life']*self.pvgen)
+
+        LCOE=total_cost+(self.params['pv_life']*cost_mant)/(self.params['pv_life']*self.pvgen)
         
         return LCOE
     

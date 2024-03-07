@@ -4,15 +4,6 @@ Created on Wed Feb 14 11:20:45 2024
 
 @author: mcalcagnotto
 """
-import pandas as pd
-from abc import ABC, abstractmethod
-import math
-import matplotlib.pyplot as plt
-import numpy_financial as npf
-import numpy as np
-from repositories import dataEcon_repository
-from interactors import dataEconomic
-import calendar
 
 
 class balCO2Year:

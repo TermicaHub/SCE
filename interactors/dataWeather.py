@@ -46,23 +46,23 @@ class outputTRNSYS(selectDataWeather):
             get_data = dataWeather.dataWeather(typeFile_weather,filePath_clima)
             df_clima = get_data.start()
         elif self.clima == 3:
-            filePath_clima = dir_1 +'r\resources\data\C3-Reus-hour.out'
+            filePath_clima = dir_1 +r'\resources\data\C3-Reus-hour.out'
             get_data = dataWeather.dataWeather(typeFile_weather,filePath_clima)
             df_clima = get_data.start()
         elif self.clima == 4:
-            filePath_clima = dir_1 +'r\resources\data\D1Vic.out'
+            filePath_clima = dir_1 +r'\resources\data\D1Vic.out'
             get_data = dataWeather.dataWeather(typeFile_weather,filePath_clima)
             df_clima = get_data.start()
         elif self.clima == 5:
-            filePath_clima = dir_1 +'r\resources\data\D2GeronaCostaBrava.out'
+            filePath_clima = dir_1 +r'\resources\data\D2GeronaCostaBrava.out'
             get_data = dataWeather.dataWeather(typeFile_weather,filePath_clima)
             df_clima = get_data.start()
         elif self.clima == 6:
-            filePath_clima = dir_1 +'r\resources\data\D3Lerida_Lleida.out'
+            filePath_clima = dir_1 +r'\resources\data\D3Lerida_Lleida.out'
             get_data = dataWeather.dataWeather(typeFile_weather,filePath_clima)
             df_clima = get_data.start()
         elif self.clima == 7:
-            filePath_clima = dir_1 +'r\resources\data\E1Puigcerda.out'
+            filePath_clima = dir_1 +r'\resources\data\E1Puigcerda.out'
             get_data = dataWeather.dataWeather(typeFile_weather,filePath_clima)
             df_clima = get_data.start()
         # elif self.clima == 8:
