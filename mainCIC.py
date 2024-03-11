@@ -29,7 +29,7 @@ from interactors import dataFV,dataWeather, resourceConsumption, dataEconomic, b
 
 # Calculations
 
-from utils import radiationFV, energyBalance_FV, coefCalc, compSimplificada, tariffCalc,co2Balance, repartoSomCom
+from utils import radiationFV, energyBalance_FV, compSimplificada, tariffCalc,co2Balance, repartoSomCom
 
 
 
@@ -218,6 +218,8 @@ PV_gen_y=df_PV_total['Pv_base'].sum()
 data_cons = baseConsumption.ConsBase(parameters['n_occ'],parameters['dhw_base'],parameters['stove_base'],parameters['oven_base'],parameters['heat_base'],parameters['acc_base'],parameters['areaV'],parameters['numV'],parameters['consum_base'])
 df_cons=data_cons.cons_total()
 
+
+
 # data Som Comunitat, perfiles tipo definidos en el archivo \\resources\\data\\ConsProfiles.csv
 
 c_output = resourceConsumption.SomCom()
@@ -267,8 +269,8 @@ if parameters['type_consum']=="cons_mean":
 #%% Calculating distribution coefficients
 #type_coef=1 igual para todos 
 #if parameters['type_coef']==1:
-input=repartoSomCom.CoefUnicoViv(name_columns)
-coefabc=coefCalc.calculo(input)
+coef_input=repartoSomCom.CoefUnicoViv(name_columns)
+coefabc=repartoSomCom.calculo(coef_input)
 coef=coefabc.start()
     
 #type_coef=2 determinado para la vivienda principal  
@@ -479,7 +481,6 @@ for i in range(0,parameters_eco['pv_life']):
 data_comp=compSimplificada.balEcoYear(d_energybalanceComb['Total'],area_t,parameters_eco)
 
 #para cada cubierta, asigna un coste y un area
-
 
 savings_y=data_comp.annualSavings(tariff_y)
 #cost_ag=parameters_eco['cost_inv_total']/area_t
