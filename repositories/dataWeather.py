@@ -54,10 +54,10 @@ class dataWeather:
         return self.typeFile.dataSource(self.direction)
     
     
-if __name__ == '__main__':
-    typeFile = fileTRNSYS()
-    dire = r'..\resources\data\C2Barcelona_Airp.out'
-    get_data = dataWeather(typeFile, dire)
-    params = get_data.start()      
+# if __name__ == '__main__':
+#     typeFile = fileTRNSYS()
+#     dire = r'..\resources\data\C2Barcelona_Airp.out'
+#     get_data = dataWeather(typeFile, dire)
+#     params = get_data.start()      
   
     

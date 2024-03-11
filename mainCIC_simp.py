@@ -29,7 +29,7 @@ from interactors import dataFV,dataWeather, resourceConsumption, dataEconomic, b
 
 # Calculations
 
-from utils import radiationFV, energyBalance_FV, coefCalc, compSimplificada, tariffCalc,co2Balance, repartoSomCom
+from utils import radiationFV, energyBalance_FV, compSimplificada, tariffCalc,co2Balance, repartoSomCom
 
 
 
@@ -235,7 +235,7 @@ for i in range(1,n_users):
     name_columns[i]='C'+ str(i)
 
 cons_total=pd.DataFrame(index=df_cons.index,columns=name_columns)
-cons_total['Cbase']=df_cons['Total']
+cons_total['Cbase']=df_cons['Cons_total']/n_users_ep
     
 #consumo del usuario base (vivienda)
 # if parameters['consum_base']<=1500:
@@ -267,8 +267,8 @@ for i in cons_total.columns[1:]:
 #%% Calculating distribution coefficients
 #type_coef=1 igual para todos 
 #if parameters['type_coef']==1:
-input=repartoSomCom.CoefUnicoViv(name_columns)
-coefabc=coefCalc.calculo(input)
+coef_input=repartoSomCom.CoefUnicoViv(name_columns)
+coefabc=repartoSomCom.calculo(coef_input)
 coef=coefabc.start()
     
 #type_coef=2 determinado para la vivienda principal  
@@ -362,6 +362,7 @@ coef=coefabc.start()
 # d_energybalanceComb, LoCov_comb = energy_balance.start()
 
 #balance combinado con un coeficiente de reparto para cada usuario 
+
 ebal_out = energyBalance_FV.balanceCombinadoCoefSomCom(cons_total,df_PV_total,coef)
 energy_balance = energyBalance_FV.calculo(ebal_out)
 d_energybalanceComb,LoCov_indiv,LoCov_comb = energy_balance.start()
@@ -443,9 +444,9 @@ tariff_out=tariffCalc.calculo(myTariff)
 tariff_y=tariff_out.start()
     
 # elif parameters_eco['tariff_type']=="tariff_pvpc":
-#     myTariff=tariffCalc.tariffPVPC(cons_total.index)
-#     tariff_out=tariffCalc.calculo(myTariff)
-#     tariff_y=tariff_out.start()
+    # myTariff=tariffCalc.tariffPVPC(cons_total.index)
+    # tariff_out=tariffCalc.calculo(myTariff)
+    # tariff_y=tariff_out.start()
     
 tariff_new={}
 for i in range(0,parameters_eco['pv_life']):
@@ -480,7 +481,7 @@ data_comp=compSimplificada.balEcoYear(d_energybalanceComb['Total'],area_t,parame
 
 #para cada cubierta, asigna un coste y un area
 
-
+balance=data_comp.monthlyBalance(tariff_y)
 savings_y=data_comp.annualSavings(tariff_y)
 #cost_ag=parameters_eco['cost_inv_total']/area_t
 #pback,coste=data_comp.simplePayback(savings_y,cost_ag)

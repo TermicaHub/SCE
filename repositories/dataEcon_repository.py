@@ -64,7 +64,7 @@ class PVPCActive(currencyType): # Read .csv with PVPC active hourly prices from 
         df_out=get_data['value'].values/1000 #convert €/MWh in €/kWh
         #PVPC_active=(get_data['value'],index=new_index)
         
-        return df_out
+        return 
 
 class PVPCSurplus(currencyType): # Read .csv with PVPC surplus hourly prices from 2022
     def dataSource(self):
@@ -103,13 +103,13 @@ class defaultCosts(currencyType): # Read .csv with reference costs for investmen
     
         
     
-class project_SQL(currencyType): # Read data from SQL 
-    def dataSource(self,filePath):
-        pass
+# class project_SQL(currencyType): # Read data from SQL 
+#     def dataSource(self,filePath):
+#         pass
 
-class project_CSV(currencyType): # Read data from Excel 
-    def dataSource(self,filePath):
-        pass
+# class project_CSV(currencyType): # Read data from Excel 
+#     def dataSource(self,filePath):
+#         pass
              
     
 class dataEcon:
@@ -120,9 +120,9 @@ class dataEcon:
         return self.typeFile.dataSource()
     
     
-if __name__ == '__main__':
-    typeFile = ciclicaSimple()
-    get_data = dataFV(typeFile)
-    params = get_data.start()      
+# if __name__ == '__main__':
+#     typeFile = ciclicaSimple()
+#     get_data = dataFV(typeFile)
+#     params = get_data.start()      
   
     

@@ -30,7 +30,7 @@ from interactors import dataFV,dataWeather, resourceConsumption, dataEconomic, b
 
 # Calculations
 
-from utils import radiationFV, energyBalance_FV, coefCalc, compSimplificada, tariffCalc,co2Balance, repartoSomCom
+from utils import radiationFV, energyBalance_FV, compSimplificada, tariffCalc,co2Balance, repartoSomCom
 
 
 
@@ -232,8 +232,12 @@ for key in df_cons_total:
         name_column= 'C'+ str(n_users)
         print (name_column)
         cons_total[name_column]=df_cons_total[key]/n_users_list[key]
-        coef[name_column]=cons_total[name_column].sum()/df_cons_ag.values.sum()
+cons_year=cons_total.sum()
+cons_year['Total']=cons_year.sum()
 
+data_in=repartoSomCom.CoefVar(cons_year)
+coefabc=repartoSomCom.calculo(data_in)
+coef=coefabc.start()
 
 #%% Energy balance 
 

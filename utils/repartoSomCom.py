@@ -73,8 +73,19 @@ class CoefDifEdif(typeCoef):
             for i in self.column_name[1:]:
                 coef[i]=(1-self.coef_main)/(self.n_users-self.viv_ep)
         return coef
+
+class CoefVar(typeCoef):
+    def __init__(self,consumption_df):
+        
+        self.consumption=consumption_df
+    def calculation(self):
+        coef=pd.Series()
+        for i in self.consumption.index[:len(self.consumption.index)-1]:
+        #coef=pd.DataFrame(index=self.dr_cons.index,columns=self.dr_cons.columns)
+            coef[i]=self.consumption[i]/self.consumption['Total']
+        return coef
     
-    
+
 class calculo:
     def __init__(self, outputType: typeCoef):
         self.outputType = outputType
