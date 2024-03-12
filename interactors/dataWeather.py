@@ -38,7 +38,7 @@ class outputTRNSYS(selectDataWeather):
         typeFile_weather = dataWeather.fileTRNSYS()
         dir_1 = sys.path[0]       
         if self.clima == 1:
-            filePath_clima = dir_1 + r'\resources\data\C2Barcelona_Airp_20.out'            
+            filePath_clima = dir_1 + r'\resources\data\C3-Reus-hour.out'            
             get_data = dataWeather.dataWeather(typeFile_weather,filePath_clima)
             df_clima = get_data.start()    
         elif self.clima == 2:
